@@ -10,6 +10,7 @@ from app.models import User
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     
     posts = [
@@ -23,7 +24,7 @@ def index():
         }
     ]
     
-    return render_template('index.html', title='home', user=user, posts=posts)
+    return render_template('index.html', title='home', posts=posts)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
