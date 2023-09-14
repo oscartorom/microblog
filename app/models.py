@@ -54,6 +54,13 @@ class User(db.Model, UserMixin):
         if self.is_following(user):
             self.followed.remove(user)
 
+    def followed_posts(self):
+        followed = Post.query.join(
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id)
+        own = Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Post.timestamp.desc())
+    
     def __repr__(self):
         return f'<User {self.username}>'
 
