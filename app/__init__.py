@@ -23,7 +23,7 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-# Mail!
+# Sending e-mails!
 mail = Mail(app)
 
 if not app.debug:
