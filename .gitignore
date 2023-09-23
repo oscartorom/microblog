@@ -161,3 +161,7 @@ cython_debug/
 
 # SQlLite
 app.db
+
+# Flask environment with credentials
+.flaskenv
+*.flaskenv
